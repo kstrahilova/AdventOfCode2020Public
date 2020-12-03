@@ -19,7 +19,7 @@ int main() {
         int n_trees = 0;
         int position = -slopes[i][0];
         int counter = 0;
-        counter = 0;//slopes[i][1];// - 1;
+        counter = 0;
         int row_n = -1;
 
         while (fgets(row, max, input) != NULL) {
