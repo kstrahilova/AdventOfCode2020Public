@@ -1,0 +1,7 @@
+a b contain 3 b c bags, 1 r o bags, 1 c d bags, 3 a g bags.
+r o contain 4 o r bags.
+b c contain 3 n o bags.
+c d contain 3 a s bags, 1 a t bag.
+a g contain 3 b l bags, 1 a h bag, 1 g b bag.
+a s contain 1 a t bag.
+a t contain 1 g o bag, 3 k l bags.
