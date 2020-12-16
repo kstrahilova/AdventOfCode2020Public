@@ -12,10 +12,8 @@ public class Main {
     private static String my_ticket;
 
     private static ArrayList <Integer> removeDuplicates(ArrayList<Integer> list) {
-        //System.out.println(list.size());
         LinkedHashSet<Integer> hashSet = new LinkedHashSet<>(list);
         return new ArrayList<>(hashSet);
-        //System.out.println(list.size());
     }
 
     private static void process_notes_Part_I(String entry) {
@@ -49,7 +47,6 @@ public class Main {
         int n = valid_values.size();
 
         for (Map.Entry entry : valid_values.entrySet()) {
-            //System.out.println(entry.getKey().getClass());
             possible_indices.put((String) entry.getKey(), new ArrayList<>());
             for (int i = 0; i < n; i++) {
                 possible_indices.get(entry.getKey()).add(i);
@@ -107,7 +104,6 @@ public class Main {
         for (Map.Entry entry : possible_indices.entrySet()) {
             counter = counter + ((ArrayList)entry.getValue()).size();
         }
-        System.out.println(counter);
 
         while (counter > possible_indices.size()) {
             for (Map.Entry entry : possible_indices.entrySet()) {
@@ -125,7 +121,7 @@ public class Main {
         }
     }
 
-    private static void process_my_ticket() {
+    private static BigInteger process_my_ticket() {
         BigInteger result = new BigInteger("1");
         String[] ticket = my_ticket.split(",");
         for (Map.Entry field : possible_indices.entrySet()) {
@@ -139,7 +135,7 @@ public class Main {
             }
         }
 
-        System.out.println("Result Part II: " + result);
+        return result;
     }
 
     public static void main(String[] args) {
@@ -154,7 +150,6 @@ public class Main {
             while (myReader.hasNextLine()) {
                 String row = myReader.nextLine();
                 if (row.equals("your ticket:")) {
-                    System.out.println("my ticket");
                     myTicket = true;
                 } else if (row.equals("nearby tickets:")) {
                     myTicket = false;
@@ -179,8 +174,6 @@ public class Main {
                 }
             }
 
-            System.out.println(invalid);
-
             get_final_indices();
 
             for (Map.Entry entry : possible_indices.entrySet()) {
@@ -190,7 +183,10 @@ public class Main {
                 }
             }
 
-            process_my_ticket();
+            System.out.println();
+            System.out.println("Result Part I: " + invalid);
+            BigInteger result = process_my_ticket();
+            System.out.println("Result Part II: " + result);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
