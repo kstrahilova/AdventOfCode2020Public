@@ -35,7 +35,8 @@ public class Main {
     private static Node getNodeByString(String node, boolean parent) {
         String[] properties = node.split(" ");
         for (Node existingNode : graph) {
-            if ((parent && existingNode.getFinish().equals(properties[0]) && existingNode.getColour().equals(properties[1])) || (!parent && existingNode.getFinish().equals(properties[1]) && existingNode.getColour().equals(properties[2]))) {
+            if ((parent && existingNode.getFinish().equals(properties[0]) && existingNode.getColour().equals(properties[1])) ||
+               (!parent && existingNode.getFinish().equals(properties[1]) && existingNode.getColour().equals(properties[2]))) {
                 return existingNode;
             }
         }
@@ -69,16 +70,14 @@ public class Main {
         }
     }
 
-    private static ArrayList<Node> findTheParentsOf(Node node, ArrayList<Node> result) {
+    private static void findTheParentsOf(Node node, ArrayList<Node> result) {
         if (node.getParents().size() == 0) {
-            return result;
         } else {
             for (Node parent : node.getParents()) {
                 result.add(parent);
                 findTheParentsOf(parent, result);
             }
         }
-        return result;
     }
 
     private static int countTheChildrenOf(Node node) {
